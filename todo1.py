@@ -18,8 +18,8 @@ def main():
     
     parser.add_argument("--cumle", nargs="+", action="append",help='cumleyi yaz')
     subparsers = parser.add_subparsers(help='commands')
-    del_parser = subparsers.add_parser('setdone', help='List contents')
-    del_parser.add_argument('--item', type=int, help='Directory to list')
+    del_parser = subparsers.add_parser('setdone', help='delete completed')
+    del_parser.add_argument('--item', type=int,help='delete completed')
 
     parser.add_argument('listall',help='listall')
     
