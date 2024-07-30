@@ -11,13 +11,16 @@ def main():
     oku=open('list.pkl','rb')
     liste1=[' ']
     liste1=pickle.load(oku)
-   
+    
+    
+
     parser=argparse.ArgumentParser()
     
     parser.add_argument("--cumle", nargs="+", action="append",help='cumleyi yaz')
-    
-    parser.add_argument('-s','--silincek', default=0, type=int,help='tamamlanan elemani yaz')
-    
+    subparsers = parser.add_subparsers(help='commands')
+    del_parser = subparsers.add_parser('setdone', help='List contents')
+    del_parser.add_argument('--item', type=int, help='Directory to list')
+
     parser.add_argument('listall',help='listall')
     
     args=parser.parse_args()
@@ -36,10 +39,14 @@ def main():
        liste2=[liste1]
        pickle.dump(liste2,yazi)
 
-       yazi.close() 
-      
+       yazi.close()
+ 
+    
+        
+    
       else:
-
+      
+    
        liste1.append(cumle)
        yazi=open('list.pkl','wb')
     
@@ -47,7 +54,7 @@ def main():
 
        yazi.close()
     else:  
-      sül=args.silincek
+      sül=args.item
       
       if sül >0:
         print(silen(sül,liste1))   
@@ -58,6 +65,12 @@ def main():
 def silen(args,liste):
     liste.pop(args)
     return liste
+
+  
+
+     
+
+
 
 main()
 
